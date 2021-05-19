@@ -1,3 +1,5 @@
+[![View isnetavl on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/64956-isnetavl)
+
 Check for an internet connection by pinging one of Google's DNSes
 
 The Windows code for the ping call is based on isnetavl by Nishant Kumar. To allow drop-in compatibility the name was kept the same.  

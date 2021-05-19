@@ -1,0 +1,806 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>isnetavl</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-05-19"><meta name="DC.source" content="isnetavl.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>isnetavl</h1><!--introduction--><p><tt style="font-size:0%">Formatted documentation for the isnetavl function.</tt>
+<div style="margin-top:-5em;color:grey">Check for an internet connection by pinging one of Google's DNSes.
+</div>
+</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Description</a></li><li><a href="#2">Syntax</a></li><li><a href="#3">Output arguments</a></li><li><a href="#4">Input arguments</a></li><li><a href="#5">Compatibility, version info, and licence</a></li><li><a href="#6">Test suite</a></li></ul></div><h2 id="1">Description</h2><p>
+The Windows code for the ping call is based on <a
+href="https://www.mathworks.com/matlabcentral/fileexchange/50498">isnetavl by Nishant Kumar</a>.
+To allow drop-in compatibility the name was kept the same.
+<br>Because this calls the system command line, the syntax is slightly different between Unix and
+Windows, as is the response.
+<br>
+<br>Some organizations block ping from working, in which case an HTML fallback is used (by
+attempting to load the google.com homepage).
+<br>
+<br>If you provide an input, the HTML method will be used, which has the benefit of testing if
+Matlab (or Octave) is able to connect to the internet. This might be relevant if there are proxy
+settings or firewall rules specific to Matlab/Octave.
+</p><h2 id="2">Syntax</h2><pre class="language-matlab">connected=isnetavl
+[connected,timing]=isnetavl
+[___]=isnetavl(test_Matlab_instead_of_system)
+</pre><h2 id="3">Output arguments</h2><p>
+<table border=1>
+<tr><td>
+connected
+</td><td>
+A <code>logical</code> denoting the connectivity. Note that this may return unexpected results if
+Matlab has separate proxy settings and/or if your DNS is having issues.
+</td></tr>
+<tr><td>
+timing
+</td><td>
+This contains the ping time as a <code>double</code>.
+<br>This defaults to 0 if there is no connection.
+<br>Note that this value will be larger than the true ping time if the HTML fallback is used.
+</td></tr>
+</table>
+</p><h2 id="4">Input arguments</h2><p>
+<table border=1>
+<tr><td>
+test_Matlab_instead_of_system
+</td><td>
+If the input in convertible to <code>true</code> the HTML method will be used, which has the
+benefit of testing if Matlab (or Octave) is able to connect to the internet. This might be
+relevant if there are proxy settings or firewall rules specific to Matlab/Octave.
+</td></tr>
+</table>
+</p><h2 id="5">Compatibility, version info, and licence</h2><p>
+Compatibility considerations:
+<ul>
+   <li>This is expected to work on all releases.</li>
+   <li>If you have proxy/firewall settings specific to Matlab/Octave, make sure to use the HTML
+      method by providing an input.</li>
+</ul>
+</p><p>
+<table>
+<tr>
+<td> Test suite result </td>
+<td style="border:2px solid black;"> Windows XP/7/10 </td>
+<td style="border:2px solid black;"> Ubuntu 20.04 LTS </td>
+<td style="border:2px solid black;"> MacOS 10.15 Catalina </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2021a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2020b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2020a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2018a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>Pass</it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2015a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>Pass</it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2013b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2012b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2011a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>Pass</it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2010b </td>
+<td> <it></it> </td>
+<td> <it>Pass</it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2010a </td>
+<td> <it>W7 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2007b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab 7.1 (R14SP3) </td>
+<td> <it>XP : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab 6.5 (R13) </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Octave 6.2.0 </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Octave 5.2.0 </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>Pass</it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Octave 4.4.1 </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it>Pass</it> </td>
+</tr>
+</table>
+</p><pre>Version: 2.0.0
+Date:    2021-05-11
+Author:  H.J. Wisselink
+Licence: CC by-nc-sa 4.0 ( https://creativecommons.org/licenses/by-nc-sa/4.0 )
+Email = 'h_j_wisselink*alumnus_utwente_nl';
+Real_email = regexprep(Email,{'*','_'},{'@','.'})</pre><h2 id="6">Test suite</h2><p>This tester is included so you can test if your own modifications would introduce any bugs. These tests form the basis for the compatibility table above.</p><pre class="codeinput"><span class="keyword">function</span> pass_part_fail=aaa___isnetavl___test(varargin)
+<span class="comment">%Test the isnetavl function as far as that is possible.</span>
+<span class="comment">%This test will assume there is internet connectivity.</span>
+<span class="comment">%</span>
+<span class="comment">%Pass:    passes all tests</span>
+<span class="comment">%Partial: [no partial passing condition]</span>
+<span class="comment">%Fail:    fails any test</span>
+pass_part_fail=<span class="string">'pass'</span>;
+
+[connected(1),timing(1)]=isnetavl___ping_via_html;
+[connected(2),timing(2)]=isnetavl___ping_via_system;
+
+fprintf(<span class="string">'results:\n'</span>)
+<span class="keyword">for</span> n=1:2
+    fprintf(<span class="string">'  method %d returned: '</span>,n)
+    <span class="keyword">if</span> connected(n)
+        fprintf(<span class="string">' [online] '</span>)
+    <span class="keyword">else</span>
+        fprintf(<span class="string">' [offline] '</span>)
+    <span class="keyword">end</span>
+    fprintf(<span class="string">' (ping time= %.0f ms)\n'</span>,timing(n))
+<span class="keyword">end</span>
+fprintf(<span class="string">'\n'</span>)
+
+<span class="keyword">if</span> any(~connected)
+    <span class="keyword">if</span> nargout&gt;0
+        pass_part_fail=<span class="string">'fail'</span>;<span class="keyword">return</span>
+    <span class="keyword">else</span>
+        error(<span class="string">'test did not match expected result'</span>)
+    <span class="keyword">end</span>
+<span class="keyword">else</span>
+    disp(<span class="string">'test completed'</span>)
+<span class="keyword">end</span>
+<span class="keyword">if</span> nargout==0,clear,<span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">function</span> [connected,timing]=isnetavl(test_Matlab_instead_of_system)
+<span class="comment">% Check for an internet connection by pinging Google.</span>
+<span class="comment">% Optional second output is the ping time (0 if not connected).</span>
+<span class="comment">%</span>
+<span class="comment">% Includes a fallback to HTML if usage of ping is not allowed. This increases the measured ping.</span>
+<span class="comment">%</span>
+<span class="comment">% If you provide an input, the HTML method will be used, which has the benefit of testing if Matlab</span>
+<span class="comment">% (or Octave) is able to connect to the internet. This might be relevant if there are proxy</span>
+<span class="comment">% settings or firewall rules specific to Matlab/Octave.</span>
+<span class="comment">%</span>
+<span class="comment">%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%</span>
+<span class="comment">%|                                                                         |%</span>
+<span class="comment">%|  Version: 2.0.0                                                         |%</span>
+<span class="comment">%|  Date:    2021-05-19                                                    |%</span>
+<span class="comment">%|  Author:  H.J. Wisselink                                                |%</span>
+<span class="comment">%|  Licence: CC by-nc-sa 4.0 ( creativecommons.org/licenses/by-nc-sa/4.0 ) |%</span>
+<span class="comment">%|  Email = 'h_j_wisselink*alumnus_utwente_nl';                            |%</span>
+<span class="comment">%|  Real_email = regexprep(Email,{'*','_'},{'@','.'})                      |%</span>
+<span class="comment">%|                                                                         |%</span>
+<span class="comment">%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%</span>
+<span class="comment">%</span>
+<span class="comment">% Tested on several versions of Matlab (ML 6.5 and onward) and Octave (4.4.1 and onward), and on</span>
+<span class="comment">% multiple operating systems (Windows/Ubuntu/MacOS). For the full test matrix, see the HTML doc.</span>
+<span class="comment">% Compatibility considerations:</span>
+<span class="comment">% - This is expected to work on all releases.</span>
+<span class="comment">% - If you have proxy/firewall settings specific to Matlab/Octave, make sure to use the HTML method</span>
+<span class="comment">%   by providing an input.</span>
+
+<span class="keyword">if</span> nargin==0,                                                        tf=false;
+<span class="keyword">else</span>,[tf1,tf2]=test_if_scalar_logical(test_Matlab_instead_of_system);tf=tf1&amp;&amp;tf2;
+<span class="keyword">end</span>
+<span class="keyword">if</span> tf
+    <span class="comment">%(the timing is not reliable)</span>
+    [connected,timing]=isnetavl___ping_via_html;
+    <span class="keyword">return</span>
+<span class="keyword">end</span>
+
+tf=isnetavl__ICMP_is_blocked;
+<span class="keyword">if</span> isempty(tf)
+    <span class="comment">%Unable to determine if ping is allowed, the connection must be down.</span>
+    connected=0;
+    timing=0;
+<span class="keyword">else</span>
+    <span class="keyword">if</span> tf
+        <span class="comment">%Ping is not allowed.</span>
+        <span class="comment">%(the timing is not reliable)</span>
+        [connected,timing]=isnetavl___ping_via_html;
+    <span class="keyword">else</span>
+        <span class="comment">%Ping is allowed.</span>
+        [connected,timing]=isnetavl___ping_via_system;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">function</span> [connected,timing]=isnetavl___ping_via_html
+<span class="comment">%Ping is blocked by some organizations. As an alternative, the google.com page can be loaded as a</span>
+<span class="comment">%normal HTML, which should work as well, although it is slower. This also means the ping timing is</span>
+<span class="comment">%no longer reliable.</span>
+<span class="keyword">persistent</span> UseWebread
+<span class="keyword">if</span> isempty(UseWebread)
+    <span class="keyword">try</span> no_webread=isempty(which(func2str(@webread)));<span class="keyword">catch</span>,no_webread=true;<span class="keyword">end</span>
+	UseWebread=~no_webread;
+<span class="keyword">end</span>
+<span class="keyword">try</span>
+    then=now;
+    <span class="keyword">if</span> UseWebread
+        str=webread(<span class="string">'http://google.com'</span>); <span class="comment">%#ok&lt;NASGU&gt;</span>
+    <span class="keyword">else</span>
+        str=urlread(<span class="string">'http://google.com'</span>); <span class="comment">%#ok&lt;NASGU,URLRD&gt;</span>
+    <span class="keyword">end</span>
+    connected=1;
+    timing=(now-then)*24*3600*1000;
+<span class="keyword">catch</span>
+    connected=0;
+    timing=0;
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">function</span> [connected,timing]=isnetavl___ping_via_system
+<span class="keyword">if</span> ispc
+    <span class="keyword">try</span>
+        <span class="comment">%                                   8.8.4.4 will also work</span>
+        [ignore_output,b]=system(<span class="string">'ping -n 1 8.8.8.8'</span>);<span class="comment">%#ok&lt;ASGLU&gt; ~</span>
+        stats=b(strfind(b,<span class="string">' = '</span>)+3);
+        stats=stats(1:3);<span class="comment">%[sent received lost]</span>
+        <span class="keyword">if</span> ~strcmp(stats,<span class="string">'110'</span>)
+            error(<span class="string">'trigger error'</span>)
+        <span class="keyword">else</span>
+            <span class="comment">%This branch will error for 'destination host unreachable'.</span>
+            connected=1;
+            <span class="comment">%This assumes there is only one place with '=[digits]ms' in the response, but this code</span>
+            <span class="comment">%is not language-specific.</span>
+            [ind1,ind2]=regexp(b,<span class="string">' [0-9]+ms'</span>);
+            timing=b((ind1(1)+1):(ind2(1)-2));
+            timing=str2double(timing);
+        <span class="keyword">end</span>
+    <span class="keyword">catch</span>
+        connected=0;
+        timing=0;
+    <span class="keyword">end</span>
+<span class="keyword">elseif</span> isunix
+    <span class="keyword">try</span>
+        <span class="comment">%                                   8.8.4.4 will also work</span>
+        [ignore_output,b]=system(<span class="string">'ping -c 1 8.8.8.8'</span>);<span class="comment">%#ok&lt;ASGLU&gt; ~</span>
+        ind=regexp(b,<span class="string">', [01] '</span>);
+        <span class="keyword">if</span> b(ind+2)~=<span class="string">'1'</span>
+            <span class="comment">%This branch includes 'destination host unreachable' errors.</span>
+            error(<span class="string">'trigger error'</span>)
+        <span class="keyword">else</span>
+            connected=1;
+            <span class="comment">%This assumes the first place with '=[digits] ms' in the response contains the ping</span>
+            <span class="comment">%timing. This code is not language-specific.</span>
+            [ind1,ind2]=regexp(b,<span class="string">'=[0-9.]+ ms'</span>);
+            timing=b((ind1(1)+1):(ind2(1)-2));
+            timing=str2double(timing);
+        <span class="keyword">end</span>
+    <span class="keyword">catch</span>
+        connected=0;
+        timing=0;
+    <span class="keyword">end</span>
+<span class="keyword">else</span>
+    error(<span class="string">'How did you even get Matlab to work?'</span>)
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">function</span> [tf,connected,timing]=isnetavl__ICMP_is_blocked
+<span class="comment">%Check if ICMP 0/8/11 is blocked.</span>
+<span class="comment">%</span>
+<span class="comment">%tf is empty if both methods fail.</span>
+
+<span class="keyword">persistent</span> output
+<span class="keyword">if</span> ~isempty(output)
+    tf=output;<span class="keyword">return</span>
+<span class="keyword">end</span>
+
+<span class="comment">%First check if ping works.</span>
+[connected,timing]=isnetavl___ping_via_system;
+<span class="keyword">if</span> connected
+    <span class="comment">%Ping worked and there is an internet connection.</span>
+    output=false;
+    tf=false;
+    <span class="keyword">return</span>
+<span class="keyword">end</span>
+
+<span class="comment">%There are two options: no internet connection, or ping is blocked.</span>
+[connected,timing]=isnetavl___ping_via_html;
+<span class="keyword">if</span> connected
+    <span class="comment">%There is an internet connection, therefore ping must be blocked.</span>
+    output=true;
+    tf=true;
+    <span class="keyword">return</span>
+<span class="keyword">end</span>
+
+<span class="comment">%Both methods failed, internet is down. Leave the value of tf (and the persistent variable) set to</span>
+<span class="comment">%empty so it is tried next time.</span>
+tf=[];
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% isnetavl
+%
+% <html><tt style="font-size:0%">Formatted documentation for the isnetavl function.</tt>
+% <div style="margin-top:-5em;color:grey">Check for an internet connection by pinging one of Google's DNSes.
+% </div>
+% </html>
+
+%% Description
+% <html>
+% The Windows code for the ping call is based on <a
+% href="https://www.mathworks.com/matlabcentral/fileexchange/50498">isnetavl by Nishant Kumar</a>.
+% To allow drop-in compatibility the name was kept the same.
+% <br>Because this calls the system command line, the syntax is slightly different between Unix and
+% Windows, as is the response.
+% <br>
+% <br>Some organizations block ping from working, in which case an HTML fallback is used (by
+% attempting to load the google.com homepage).
+% <br>
+% <br>If you provide an input, the HTML method will be used, which has the benefit of testing if
+% Matlab (or Octave) is able to connect to the internet. This might be relevant if there are proxy
+% settings or firewall rules specific to Matlab/Octave.
+% </html>
+
+%% Syntax
+%
+%   connected=isnetavl
+%   [connected,timing]=isnetavl
+%   [___]=isnetavl(test_Matlab_instead_of_system)
+
+%% Output arguments
+%
+% <html>
+% <table border=1>
+% <tr><td>
+% connected
+% </td><td>
+% A <code>logical</code> denoting the connectivity. Note that this may return unexpected results if
+% Matlab has separate proxy settings and/or if your DNS is having issues.
+% </td></tr>
+% <tr><td>
+% timing
+% </td><td>
+% This contains the ping time as a <code>double</code>.
+% <br>This defaults to 0 if there is no connection.
+% <br>Note that this value will be larger than the true ping time if the HTML fallback is used.
+% </td></tr>
+% </table>
+% </html>
+
+%% Input arguments
+%
+% <html>
+% <table border=1>
+% <tr><td>
+% test_Matlab_instead_of_system
+% </td><td>
+% If the input in convertible to <code>true</code> the HTML method will be used, which has the
+% benefit of testing if Matlab (or Octave) is able to connect to the internet. This might be
+% relevant if there are proxy settings or firewall rules specific to Matlab/Octave.
+% </td></tr>
+% </table>
+% </html>
+
+%% Compatibility, version info, and licence
+% <html>
+% Compatibility considerations:
+% <ul>
+%    <li>This is expected to work on all releases.</li>
+%    <li>If you have proxy/firewall settings specific to Matlab/Octave, make sure to use the HTML
+%       method by providing an input.</li>
+% </ul>
+% </html>
+% 
+% <html>
+% <table>
+% <tr>
+% <td> Test suite result </td>
+% <td style="border:2px solid black;"> Windows XP/7/10 </td>
+% <td style="border:2px solid black;"> Ubuntu 20.04 LTS </td>
+% <td style="border:2px solid black;"> MacOS 10.15 Catalina </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2021a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2020b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2020a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2018a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>Pass</it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2015a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>Pass</it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2013b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2012b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2011a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>Pass</it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2010b </td>
+% <td> <it></it> </td>
+% <td> <it>Pass</it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2010a </td>
+% <td> <it>W7 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2007b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab 7.1 (R14SP3) </td>
+% <td> <it>XP : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab 6.5 (R13) </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Octave 6.2.0 </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Octave 5.2.0 </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>Pass</it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Octave 4.4.1 </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it>Pass</it> </td>
+% </tr>
+% </table>
+% </html>
+%
+%  Version: 2.0.0
+%  Date:    2021-05-11
+%  Author:  H.J. Wisselink
+%  Licence: CC by-nc-sa 4.0 ( https://creativecommons.org/licenses/by-nc-sa/4.0 )
+%  Email = 'h_j_wisselink*alumnus_utwente_nl';
+%  Real_email = regexprep(Email,{'*','_'},{'@','.'})
+
+%% Test suite
+%
+% This tester is included so you can test if your own modifications would introduce any bugs. These
+% tests form the basis for the compatibility table above.
+% 
+function pass_part_fail=aaa___isnetavl___test(varargin)
+%Test the isnetavl function as far as that is possible.
+%This test will assume there is internet connectivity.
+%
+%Pass:    passes all tests
+%Partial: [no partial passing condition]
+%Fail:    fails any test
+pass_part_fail='pass';
+
+[connected(1),timing(1)]=isnetavl___ping_via_html;
+[connected(2),timing(2)]=isnetavl___ping_via_system;
+
+fprintf('results:\n')
+for n=1:2
+    fprintf('  method %d returned: ',n)
+    if connected(n)
+        fprintf(' [online] ')
+    else
+        fprintf(' [offline] ')
+    end
+    fprintf(' (ping time= %.0f ms)\n',timing(n))
+end
+fprintf('\n')
+
+if any(~connected)
+    if nargout>0
+        pass_part_fail='fail';return
+    else
+        error('test did not match expected result')
+    end
+else
+    disp('test completed')
+end
+if nargout==0,clear,end
+end
+function [connected,timing]=isnetavl(test_Matlab_instead_of_system)
+% Check for an internet connection by pinging Google.
+% Optional second output is the ping time (0 if not connected).
+%
+% Includes a fallback to HTML if usage of ping is not allowed. This increases the measured ping.
+%
+% If you provide an input, the HTML method will be used, which has the benefit of testing if Matlab
+% (or Octave) is able to connect to the internet. This might be relevant if there are proxy
+% settings or firewall rules specific to Matlab/Octave.
+%
+%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%
+%|                                                                         |%
+%|  Version: 2.0.0                                                         |%
+%|  Date:    2021-05-19                                                    |%
+%|  Author:  H.J. Wisselink                                                |%
+%|  Licence: CC by-nc-sa 4.0 ( creativecommons.org/licenses/by-nc-sa/4.0 ) |%
+%|  Email = 'h_j_wisselink*alumnus_utwente_nl';                            |%
+%|  Real_email = regexprep(Email,{'*','_'},{'@','.'})                      |%
+%|                                                                         |%
+%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%
+%
+% Tested on several versions of Matlab (ML 6.5 and onward) and Octave (4.4.1 and onward), and on
+% multiple operating systems (Windows/Ubuntu/MacOS). For the full test matrix, see the HTML doc.
+% Compatibility considerations:
+% - This is expected to work on all releases.
+% - If you have proxy/firewall settings specific to Matlab/Octave, make sure to use the HTML method
+%   by providing an input.
+
+if nargin==0,                                                        tf=false;
+else,[tf1,tf2]=test_if_scalar_logical(test_Matlab_instead_of_system);tf=tf1&&tf2;
+end
+if tf
+    %(the timing is not reliable)
+    [connected,timing]=isnetavl___ping_via_html;
+    return
+end
+
+tf=isnetavl__ICMP_is_blocked;
+if isempty(tf)
+    %Unable to determine if ping is allowed, the connection must be down.
+    connected=0;
+    timing=0;
+else
+    if tf
+        %Ping is not allowed.
+        %(the timing is not reliable)
+        [connected,timing]=isnetavl___ping_via_html;
+    else
+        %Ping is allowed.
+        [connected,timing]=isnetavl___ping_via_system;
+    end
+end
+end
+function [connected,timing]=isnetavl___ping_via_html
+%Ping is blocked by some organizations. As an alternative, the google.com page can be loaded as a
+%normal HTML, which should work as well, although it is slower. This also means the ping timing is
+%no longer reliable.
+persistent UseWebread
+if isempty(UseWebread)
+    try no_webread=isempty(which(func2str(@webread)));catch,no_webread=true;end
+	UseWebread=~no_webread;
+end
+try
+    then=now;
+    if UseWebread
+        str=webread('http://google.com'); %#ok<NASGU>
+    else
+        str=urlread('http://google.com'); %#ok<NASGU,URLRD>
+    end
+    connected=1;
+    timing=(now-then)*24*3600*1000;
+catch
+    connected=0;
+    timing=0;
+end
+end
+function [connected,timing]=isnetavl___ping_via_system
+if ispc
+    try
+        %                                   8.8.4.4 will also work
+        [ignore_output,b]=system('ping -n 1 8.8.8.8');%#ok<ASGLU> ~
+        stats=b(strfind(b,' = ')+3);
+        stats=stats(1:3);%[sent received lost]
+        if ~strcmp(stats,'110')
+            error('trigger error')
+        else
+            %This branch will error for 'destination host unreachable'.
+            connected=1;
+            %This assumes there is only one place with '=[digits]ms' in the response, but this code
+            %is not language-specific.
+            [ind1,ind2]=regexp(b,' [0-9]+ms');
+            timing=b((ind1(1)+1):(ind2(1)-2));
+            timing=str2double(timing);
+        end
+    catch
+        connected=0;
+        timing=0;
+    end
+elseif isunix
+    try
+        %                                   8.8.4.4 will also work
+        [ignore_output,b]=system('ping -c 1 8.8.8.8');%#ok<ASGLU> ~
+        ind=regexp(b,', [01] ');
+        if b(ind+2)~='1'
+            %This branch includes 'destination host unreachable' errors.
+            error('trigger error')
+        else
+            connected=1;
+            %This assumes the first place with '=[digits] ms' in the response contains the ping
+            %timing. This code is not language-specific.
+            [ind1,ind2]=regexp(b,'=[0-9.]+ ms');
+            timing=b((ind1(1)+1):(ind2(1)-2));
+            timing=str2double(timing);
+        end
+    catch
+        connected=0;
+        timing=0;
+    end
+else
+    error('How did you even get Matlab to work?')
+end
+end
+function [tf,connected,timing]=isnetavl__ICMP_is_blocked
+%Check if ICMP 0/8/11 is blocked.
+%
+%tf is empty if both methods fail.
+
+persistent output
+if ~isempty(output)
+    tf=output;return
+end
+
+%First check if ping works.
+[connected,timing]=isnetavl___ping_via_system;
+if connected
+    %Ping worked and there is an internet connection.
+    output=false;
+    tf=false;
+    return
+end
+
+%There are two options: no internet connection, or ping is blocked.
+[connected,timing]=isnetavl___ping_via_html;
+if connected
+    %There is an internet connection, therefore ping must be blocked.
+    output=true;
+    tf=true;
+    return
+end
+
+%Both methods failed, internet is down. Leave the value of tf (and the persistent variable) set to
+%empty so it is tried next time.
+tf=[];
+end
+
+##### SOURCE END #####
+--></body></html>
