@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>isnetavl</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-05-19"><meta name="DC.source" content="isnetavl.m"><style type="text/css">
+      --><title>isnetavl</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-04-20"><meta name="DC.source" content="isnetavl.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -85,7 +85,7 @@ Matlab (or Octave) is able to connect to the internet. This might be relevant if
 settings or firewall rules specific to Matlab/Octave.
 </p><h2 id="2">Syntax</h2><pre class="language-matlab">connected=isnetavl
 [connected,timing]=isnetavl
-[___]=isnetavl(test_Matlab_instead_of_system)
+[___]=isnetavl(use_HTML_test_only)
 </pre><h2 id="3">Output arguments</h2><p>
 <table border=1>
 <tr><td>
@@ -97,17 +97,16 @@ Matlab has separate proxy settings and/or if your DNS is having issues.
 <tr><td>
 timing
 </td><td>
-This contains the ping time as a <code>double</code>.
-<br>This defaults to 0 if there is no connection.
+This contains the ping time as a <code>double</code> and defaults to 0 if there is no connection.
 <br>Note that this value will be larger than the true ping time if the HTML fallback is used.
 </td></tr>
 </table>
 </p><h2 id="4">Input arguments</h2><p>
 <table border=1>
 <tr><td>
-test_Matlab_instead_of_system
+use_HTML_test_only
 </td><td>
-If the input in convertible to <code>true</code> the HTML method will be used, which has the
+If the input is convertible to <code>true</code> the HTML method will be used, which has the
 benefit of testing if Matlab (or Octave) is able to connect to the internet. This might be
 relevant if there are proxy settings or firewall rules specific to Matlab/Octave.
 </td></tr>
@@ -123,9 +122,21 @@ Compatibility considerations:
 <table>
 <tr>
 <td> Test suite result </td>
-<td style="border:2px solid black;"> Windows XP/7/10 </td>
-<td style="border:2px solid black;"> Ubuntu 20.04 LTS </td>
-<td style="border:2px solid black;"> MacOS 10.15 Catalina </td>
+<td style="border:2px solid black;"> Windows </td>
+<td style="border:2px solid black;"> Linux </td>
+<td style="border:2px solid black;"> MacOS </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2022a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
+<td> <it>Monterey : Pass</it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2021b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
+<td> <it>Monterey : Pass</it> </td>
 </tr>
 <tr>
 <td style="border:2px solid black;"> Matlab R2021a </td>
@@ -136,8 +147,8 @@ Compatibility considerations:
 <tr>
 <td style="border:2px solid black;"> Matlab R2020b </td>
 <td> <it>W10 : Pass</it> </td>
-<td> <it></it> </td>
-<td> <it></it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
+<td> <it>Monterey : Pass</it> </td>
 </tr>
 <tr>
 <td style="border:2px solid black;"> Matlab R2020a </td>
@@ -146,15 +157,39 @@ Compatibility considerations:
 <td> <it></it> </td>
 </tr>
 <tr>
+<td style="border:2px solid black;"> Matlab R2019b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
+<td> <it>Monterey : Pass</it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2019a </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it></it> </td>
+<td> <it></it> </td>
+</tr>
+<tr>
 <td style="border:2px solid black;"> Matlab R2018a </td>
 <td> <it>W10 : Pass</it> </td>
-<td> <it>Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
 <td> <it></it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2017b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
+<td> <it>Monterey : Pass</it> </td>
+</tr>
+<tr>
+<td style="border:2px solid black;"> Matlab R2016b </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
+<td> <it>Monterey : Pass</it> </td>
 </tr>
 <tr>
 <td style="border:2px solid black;"> Matlab R2015a </td>
 <td> <it>W10 : Pass</it> </td>
-<td> <it>Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
 <td> <it></it> </td>
 </tr>
 <tr>
@@ -164,21 +199,21 @@ Compatibility considerations:
 <td> <it></it> </td>
 </tr>
 <tr>
-<td style="border:2px solid black;"> Matlab R2012b </td>
-<td> <it>W10 : Pass</it> </td>
+<td style="border:2px solid black;"> Matlab R2012a </td>
 <td> <it></it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
 <td> <it></it> </td>
 </tr>
 <tr>
 <td style="border:2px solid black;"> Matlab R2011a </td>
 <td> <it>W10 : Pass</it> </td>
-<td> <it>Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
 <td> <it></it> </td>
 </tr>
 <tr>
 <td style="border:2px solid black;"> Matlab R2010b </td>
 <td> <it></it> </td>
-<td> <it>Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
 <td> <it></it> </td>
 </tr>
 <tr>
@@ -206,26 +241,32 @@ Compatibility considerations:
 <td> <it></it> </td>
 </tr>
 <tr>
-<td style="border:2px solid black;"> Octave 6.2.0 </td>
+<td style="border:2px solid black;"> Octave 7.1.0 </td>
 <td> <it>W10 : Pass</it> </td>
 <td> <it></it> </td>
 <td> <it></it> </td>
 </tr>
 <tr>
+<td style="border:2px solid black;"> Octave 6.2.0 </td>
+<td> <it>W10 : Pass</it> </td>
+<td> <it>raspbian_11 : Pass</it> </td>
+<td> <it>Catalina : Pass</it> </td>
+</tr>
+<tr>
 <td style="border:2px solid black;"> Octave 5.2.0 </td>
 <td> <it>W10 : Pass</it> </td>
-<td> <it>Pass</it> </td>
+<td> <it>ubuntu_20.04 : Pass</it> </td>
 <td> <it></it> </td>
 </tr>
 <tr>
 <td style="border:2px solid black;"> Octave 4.4.1 </td>
 <td> <it>W10 : Pass</it> </td>
 <td> <it></it> </td>
-<td> <it>Pass</it> </td>
+<td> <it>Catalina : Pass</it> </td>
 </tr>
 </table>
-</p><pre>Version: 2.0.0
-Date:    2021-05-11
+</p><pre>Version: 2.0.1
+Date:    2022-04-20
 Author:  H.J. Wisselink
 Licence: CC by-nc-sa 4.0 ( https://creativecommons.org/licenses/by-nc-sa/4.0 )
 Email = 'h_j_wisselink*alumnus_utwente_nl';
@@ -255,29 +296,161 @@ fprintf(<span class="string">'\n'</span>)
 
 <span class="keyword">if</span> any(~connected)
     <span class="keyword">if</span> nargout&gt;0
-        pass_part_fail=<span class="string">'fail'</span>;<span class="keyword">return</span>
+        pass_part_fail=<span class="string">'fail'</span>;
     <span class="keyword">else</span>
         error(<span class="string">'test did not match expected result'</span>)
     <span class="keyword">end</span>
-<span class="keyword">else</span>
-    disp(<span class="string">'test completed'</span>)
 <span class="keyword">end</span>
+disp([<span class="string">'tester function '</span> mfilename <span class="string">' finished '</span>])
 <span class="keyword">if</span> nargout==0,clear,<span class="keyword">end</span>
 <span class="keyword">end</span>
-<span class="keyword">function</span> [connected,timing]=isnetavl(test_Matlab_instead_of_system)
-<span class="comment">% Check for an internet connection by pinging Google.</span>
-<span class="comment">% Optional second output is the ping time (0 if not connected).</span>
+<span class="keyword">function</span> tf=ifversion(test,Rxxxxab,Oct_flag,Oct_test,Oct_ver)
+<span class="comment">%Determine if the current version satisfies a version restriction</span>
 <span class="comment">%</span>
-<span class="comment">% Includes a fallback to HTML if usage of ping is not allowed. This increases the measured ping.</span>
+<span class="comment">% To keep the function fast, no input checking is done. This function returns a NaN if a release</span>
+<span class="comment">% name is used that is not in the dictionary.</span>
 <span class="comment">%</span>
-<span class="comment">% If you provide an input, the HTML method will be used, which has the benefit of testing if Matlab</span>
-<span class="comment">% (or Octave) is able to connect to the internet. This might be relevant if there are proxy</span>
-<span class="comment">% settings or firewall rules specific to Matlab/Octave.</span>
+<span class="comment">% Syntax:</span>
+<span class="comment">%   tf=ifversion(test,Rxxxxab)</span>
+<span class="comment">%   tf=ifversion(test,Rxxxxab,'Octave',test_for_Octave,v_Octave)</span>
+<span class="comment">%</span>
+<span class="comment">% Input/output arguments:</span>
+<span class="comment">% tf:</span>
+<span class="comment">%   If the current version satisfies the test this returns true. This works similar to verLessThan.</span>
+<span class="comment">% Rxxxxab:</span>
+<span class="comment">%   A char array containing a release description (e.g. 'R13', 'R14SP2' or 'R2019a') or the numeric</span>
+<span class="comment">%   version (e.g. 6.5, 7, or 9.6).</span>
+<span class="comment">% test:</span>
+<span class="comment">%   A char array containing a logical test. The interpretation of this is equivalent to</span>
+<span class="comment">%   eval([current test Rxxxxab]). For examples, see below.</span>
+<span class="comment">%</span>
+<span class="comment">% Examples:</span>
+<span class="comment">% ifversion('&gt;=','R2009a') returns true when run on R2009a or later</span>
+<span class="comment">% ifversion('&lt;','R2016a') returns true when run on R2015b or older</span>
+<span class="comment">% ifversion('==','R2018a') returns true only when run on R2018a</span>
+<span class="comment">% ifversion('==',9.9) returns true only when run on R2020b</span>
+<span class="comment">% ifversion('&lt;',0,'Octave','&gt;',0) returns true only on Octave</span>
+<span class="comment">% ifversion('&lt;',0,'Octave','&gt;=',6) returns true only on Octave 6 and higher</span>
+<span class="comment">%</span>
+<span class="comment">% The conversion is based on a manual list and therefore needs to be updated manually, so it might</span>
+<span class="comment">% not be complete. Although it should be possible to load the list from Wikipedia, this is not</span>
+<span class="comment">% implemented.</span>
 <span class="comment">%</span>
 <span class="comment">%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%</span>
 <span class="comment">%|                                                                         |%</span>
-<span class="comment">%|  Version: 2.0.0                                                         |%</span>
-<span class="comment">%|  Date:    2021-05-19                                                    |%</span>
+<span class="comment">%|  Version: 1.1.1                                                         |%</span>
+<span class="comment">%|  Date:    2022-03-14                                                    |%</span>
+<span class="comment">%|  Author:  H.J. Wisselink                                                |%</span>
+<span class="comment">%|  Licence: CC by-nc-sa 4.0 ( creativecommons.org/licenses/by-nc-sa/4.0 ) |%</span>
+<span class="comment">%|  Email = 'h_j_wisselink*alumnus_utwente_nl';                            |%</span>
+<span class="comment">%|  Real_email = regexprep(Email,{'*','_'},{'@','.'})                      |%</span>
+<span class="comment">%|                                                                         |%</span>
+<span class="comment">%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%</span>
+<span class="comment">%</span>
+<span class="comment">% Tested on several versions of Matlab (ML 6.5 and onward) and Octave (4.4.1 and onward), and on</span>
+<span class="comment">% multiple operating systems (Windows/Ubuntu/MacOS). For the full test matrix, see the HTML doc.</span>
+<span class="comment">% Compatibility considerations:</span>
+<span class="comment">% - This is expected to work on all releases.</span>
+
+<span class="comment">% The decimal of the version numbers are padded with a 0 to make sure v7.10 is larger than v7.9.</span>
+<span class="comment">% This does mean that any numeric version input needs to be adapted. multiply by 100 and round to</span>
+<span class="comment">% remove the potential for float rounding errors.</span>
+<span class="comment">% Store in persistent for fast recall (don't use getpref, as that is slower than generating the</span>
+<span class="comment">% variables and makes updating this function harder).</span>
+<span class="keyword">persistent</span>  v_num v_dict octave
+<span class="keyword">if</span> isempty(v_num)
+    <span class="comment">% Test if Octave is used instead of Matlab.</span>
+    octave=exist(<span class="string">'OCTAVE_VERSION'</span>, <span class="string">'builtin'</span>);
+
+    <span class="comment">% Get current version number. This code was suggested by Jan on this thread:</span>
+    <span class="comment">% https://mathworks.com/matlabcentral/answers/1671199#comment_2040389</span>
+    v_num = [100, 1] * sscanf(version, <span class="string">'%d.%d'</span>, 2);
+
+    <span class="comment">% Get dictionary to use for ismember.</span>
+    v_dict={<span class="keyword">...</span>
+        <span class="string">'R13'</span> 605;<span class="string">'R13SP1'</span> 605;<span class="string">'R13SP2'</span> 605;<span class="string">'R14'</span> 700;<span class="string">'R14SP1'</span> 700;<span class="string">'R14SP2'</span> 700;
+        <span class="string">'R14SP3'</span> 701;<span class="string">'R2006a'</span> 702;<span class="string">'R2006b'</span> 703;<span class="string">'R2007a'</span> 704;<span class="string">'R2007b'</span> 705;
+        <span class="string">'R2008a'</span> 706;<span class="string">'R2008b'</span> 707;<span class="string">'R2009a'</span> 708;<span class="string">'R2009b'</span> 709;<span class="string">'R2010a'</span> 710;
+        <span class="string">'R2010b'</span> 711;<span class="string">'R2011a'</span> 712;<span class="string">'R2011b'</span> 713;<span class="string">'R2012a'</span> 714;<span class="string">'R2012b'</span> 800;
+        <span class="string">'R2013a'</span> 801;<span class="string">'R2013b'</span> 802;<span class="string">'R2014a'</span> 803;<span class="string">'R2014b'</span> 804;<span class="string">'R2015a'</span> 805;
+        <span class="string">'R2015b'</span> 806;<span class="string">'R2016a'</span> 900;<span class="string">'R2016b'</span> 901;<span class="string">'R2017a'</span> 902;<span class="string">'R2017b'</span> 903;
+        <span class="string">'R2018a'</span> 904;<span class="string">'R2018b'</span> 905;<span class="string">'R2019a'</span> 906;<span class="string">'R2019b'</span> 907;<span class="string">'R2020a'</span> 908;
+        <span class="string">'R2020b'</span> 909;<span class="string">'R2021a'</span> 910;<span class="string">'R2021b'</span> 911;<span class="string">'R2022a'</span> 912};
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> octave
+    <span class="keyword">if</span> nargin==2
+        warning(<span class="string">'HJW:ifversion:NoOctaveTest'</span>,<span class="keyword">...</span>
+            [<span class="string">'No version test for Octave was provided.'</span>,char(10),<span class="keyword">...</span>
+            <span class="string">'This function might return an unexpected outcome.'</span>]) <span class="comment">%#ok&lt;CHARTEN&gt;</span>
+        <span class="keyword">if</span> isnumeric(Rxxxxab)
+            v=0.1*Rxxxxab+0.9*fix(Rxxxxab);v=round(100*v);
+        <span class="keyword">else</span>
+            L=ismember(v_dict(:,1),Rxxxxab);
+            <span class="keyword">if</span> sum(L)~=1
+                warning(<span class="string">'HJW:ifversion:NotInDict'</span>,<span class="keyword">...</span>
+                    <span class="string">'The requested version is not in the hard-coded list.'</span>)
+                tf=NaN;<span class="keyword">return</span>
+            <span class="keyword">else</span>
+                v=v_dict{L,2};
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+    <span class="keyword">elseif</span> nargin==4
+        <span class="comment">% Undocumented shorthand syntax: skip the 'Octave' argument.</span>
+        [test,v]=deal(Oct_flag,Oct_test);
+        <span class="comment">% Convert 4.1 to 401.</span>
+        v=0.1*v+0.9*fix(v);v=round(100*v);
+    <span class="keyword">else</span>
+        [test,v]=deal(Oct_test,Oct_ver);
+        <span class="comment">% Convert 4.1 to 401.</span>
+        v=0.1*v+0.9*fix(v);v=round(100*v);
+    <span class="keyword">end</span>
+<span class="keyword">else</span>
+    <span class="comment">% Convert R notation to numeric and convert 9.1 to 901.</span>
+    <span class="keyword">if</span> isnumeric(Rxxxxab)
+        v=0.1*Rxxxxab+0.9*fix(Rxxxxab);v=round(100*v);
+    <span class="keyword">else</span>
+        L=ismember(v_dict(:,1),Rxxxxab);
+        <span class="keyword">if</span> sum(L)~=1
+            warning(<span class="string">'HJW:ifversion:NotInDict'</span>,<span class="keyword">...</span>
+                <span class="string">'The requested version is not in the hard-coded list.'</span>)
+            tf=NaN;<span class="keyword">return</span>
+        <span class="keyword">else</span>
+            v=v_dict{L,2};
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">switch</span> test
+    <span class="keyword">case</span> <span class="string">'=='</span>, tf= v_num == v;
+    <span class="keyword">case</span> <span class="string">'&lt;'</span> , tf= v_num &lt;  v;
+    <span class="keyword">case</span> <span class="string">'&lt;='</span>, tf= v_num &lt;= v;
+    <span class="keyword">case</span> <span class="string">'&gt;'</span> , tf= v_num &gt;  v;
+    <span class="keyword">case</span> <span class="string">'&gt;='</span>, tf= v_num &gt;= v;
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">function</span> [connected,timing]=isnetavl(use_HTML_test_only)
+<span class="comment">%Check for an internet connection by pinging Google</span>
+<span class="comment">%</span>
+<span class="comment">% Syntax:</span>
+<span class="comment">%   [connected,timing]=isnetavl(use_HTML_test_only)</span>
+<span class="comment">%</span>
+<span class="comment">% Input/output arguments:</span>
+<span class="comment">% connected:</span>
+<span class="comment">%   A logical denoting the connectivity. Note that this may return unexpected results if Matlab has</span>
+<span class="comment">%   separate proxy settings and/or if your DNS is having issues.</span>
+<span class="comment">% timing:</span>
+<span class="comment">%   This contains the ping time as a double and defaults to 0 if there is no connection.</span>
+<span class="comment">%   Note that this value will be larger than the true ping time if the HTML fallback is used.</span>
+<span class="comment">% use_HTML_test_only:</span>
+<span class="comment">%   If the input is convertible to true the HTML method will be used, which has the benefit of</span>
+<span class="comment">%   testing if Matlab (or Octave) is able to connect to the internet. This might be relevant if</span>
+<span class="comment">%   there are proxy settings or firewall rules specific to Matlab/Octave.</span>
+<span class="comment">%   Note that the ping value will be larger than the true value if the HTML fallback is used.</span>
+<span class="comment">%</span>
+<span class="comment">%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%</span>
+<span class="comment">%|                                                                         |%</span>
+<span class="comment">%|  Version: 2.0.1                                                         |%</span>
+<span class="comment">%|  Date:    2022-04-20                                                    |%</span>
 <span class="comment">%|  Author:  H.J. Wisselink                                                |%</span>
 <span class="comment">%|  Licence: CC by-nc-sa 4.0 ( creativecommons.org/licenses/by-nc-sa/4.0 ) |%</span>
 <span class="comment">%|  Email = 'h_j_wisselink*alumnus_utwente_nl';                            |%</span>
@@ -292,8 +465,8 @@ fprintf(<span class="string">'\n'</span>)
 <span class="comment">% - If you have proxy/firewall settings specific to Matlab/Octave, make sure to use the HTML method</span>
 <span class="comment">%   by providing an input.</span>
 
-<span class="keyword">if</span> nargin==0,                                                        tf=false;
-<span class="keyword">else</span>,[tf1,tf2]=test_if_scalar_logical(test_Matlab_instead_of_system);tf=tf1&amp;&amp;tf2;
+<span class="keyword">if</span> nargin==0,                                             tf=false;
+<span class="keyword">else</span>,[tf1,tf2]=test_if_scalar_logical(use_HTML_test_only);tf=tf1&amp;&amp;tf2;
 <span class="keyword">end</span>
 <span class="keyword">if</span> tf
     <span class="comment">%(the timing is not reliable)</span>
@@ -324,7 +497,7 @@ tf=isnetavl__ICMP_is_blocked;
 <span class="keyword">persistent</span> UseWebread
 <span class="keyword">if</span> isempty(UseWebread)
     <span class="keyword">try</span> no_webread=isempty(which(func2str(@webread)));<span class="keyword">catch</span>,no_webread=true;<span class="keyword">end</span>
-	UseWebread=~no_webread;
+    UseWebread=~no_webread;
 <span class="keyword">end</span>
 <span class="keyword">try</span>
     then=now;
@@ -418,7 +591,50 @@ tf=isnetavl__ICMP_is_blocked;
 <span class="comment">%empty so it is tried next time.</span>
 tf=[];
 <span class="keyword">end</span>
-</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+<span class="keyword">function</span> [isLogical,val]=test_if_scalar_logical(val)
+<span class="comment">%Test if the input is a scalar logical or convertible to it.</span>
+<span class="comment">%The char and string test are not case sensitive.</span>
+<span class="comment">%(use the first output to trigger an input error, use the second as the parsed input)</span>
+<span class="comment">%</span>
+<span class="comment">% Allowed values:</span>
+<span class="comment">%- true or false</span>
+<span class="comment">%- 1 or 0</span>
+<span class="comment">%- 'on' or 'off'</span>
+<span class="comment">%- "on" or "off"</span>
+<span class="comment">%- matlab.lang.OnOffSwitchState.on or matlab.lang.OnOffSwitchState.off</span>
+<span class="comment">%- 'enable' or 'disable'</span>
+<span class="comment">%- 'enabled' or 'disabled'</span>
+<span class="keyword">persistent</span> states
+<span class="keyword">if</span> isempty(states)
+    states={true,false;<span class="keyword">...</span>
+        1,0;<span class="keyword">...</span>
+        <span class="string">'on'</span>,<span class="string">'off'</span>;<span class="keyword">...</span>
+        <span class="string">'enable'</span>,<span class="string">'disable'</span>;<span class="keyword">...</span>
+        <span class="string">'enabled'</span>,<span class="string">'disabled'</span>};
+    <span class="keyword">if</span> ifversion(<span class="string">'&gt;='</span>,<span class="string">'R2016b'</span>,<span class="string">'&lt;'</span>,0)
+        states(end+1,:)={string(<span class="string">'on'</span>),string(<span class="string">'off'</span>)}; <span class="comment">%#ok&lt;STRQUOT&gt;</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+isLogical=true;
+<span class="keyword">try</span>
+    <span class="keyword">if</span> isa(val,<span class="string">'char'</span>) || isa(val,<span class="string">'string'</span>)
+        <span class="keyword">try</span> val=lower(val);<span class="keyword">catch</span>,<span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="keyword">for</span> n=1:size(states,1)
+        <span class="keyword">for</span> m=1:2
+            <span class="keyword">if</span> isequal(val,states{n,m})
+                val=states{1,m};<span class="keyword">return</span>
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> isa(val,<span class="string">'matlab.lang.OnOffSwitchState'</span>)
+        val=logical(val);<span class="keyword">return</span>
+    <span class="keyword">end</span>
+<span class="keyword">catch</span>
+<span class="keyword">end</span>
+isLogical=false;
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% isnetavl
 %
@@ -447,7 +663,7 @@ tf=[];
 %
 %   connected=isnetavl
 %   [connected,timing]=isnetavl
-%   [___]=isnetavl(test_Matlab_instead_of_system)
+%   [___]=isnetavl(use_HTML_test_only)
 
 %% Output arguments
 %
@@ -462,8 +678,7 @@ tf=[];
 % <tr><td>
 % timing
 % </td><td>
-% This contains the ping time as a <code>double</code>.
-% <br>This defaults to 0 if there is no connection.
+% This contains the ping time as a <code>double</code> and defaults to 0 if there is no connection.
 % <br>Note that this value will be larger than the true ping time if the HTML fallback is used.
 % </td></tr>
 % </table>
@@ -474,9 +689,9 @@ tf=[];
 % <html>
 % <table border=1>
 % <tr><td>
-% test_Matlab_instead_of_system
+% use_HTML_test_only
 % </td><td>
-% If the input in convertible to <code>true</code> the HTML method will be used, which has the
+% If the input is convertible to <code>true</code> the HTML method will be used, which has the
 % benefit of testing if Matlab (or Octave) is able to connect to the internet. This might be
 % relevant if there are proxy settings or firewall rules specific to Matlab/Octave.
 % </td></tr>
@@ -497,9 +712,21 @@ tf=[];
 % <table>
 % <tr>
 % <td> Test suite result </td>
-% <td style="border:2px solid black;"> Windows XP/7/10 </td>
-% <td style="border:2px solid black;"> Ubuntu 20.04 LTS </td>
-% <td style="border:2px solid black;"> MacOS 10.15 Catalina </td>
+% <td style="border:2px solid black;"> Windows </td>
+% <td style="border:2px solid black;"> Linux </td>
+% <td style="border:2px solid black;"> MacOS </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2022a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
+% <td> <it>Monterey : Pass</it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2021b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
+% <td> <it>Monterey : Pass</it> </td>
 % </tr>
 % <tr>
 % <td style="border:2px solid black;"> Matlab R2021a </td>
@@ -510,8 +737,8 @@ tf=[];
 % <tr>
 % <td style="border:2px solid black;"> Matlab R2020b </td>
 % <td> <it>W10 : Pass</it> </td>
-% <td> <it></it> </td>
-% <td> <it></it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
+% <td> <it>Monterey : Pass</it> </td>
 % </tr>
 % <tr>
 % <td style="border:2px solid black;"> Matlab R2020a </td>
@@ -520,15 +747,39 @@ tf=[];
 % <td> <it></it> </td>
 % </tr>
 % <tr>
+% <td style="border:2px solid black;"> Matlab R2019b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
+% <td> <it>Monterey : Pass</it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2019a </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it></it> </td>
+% <td> <it></it> </td>
+% </tr>
+% <tr>
 % <td style="border:2px solid black;"> Matlab R2018a </td>
 % <td> <it>W10 : Pass</it> </td>
-% <td> <it>Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
 % <td> <it></it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2017b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
+% <td> <it>Monterey : Pass</it> </td>
+% </tr>
+% <tr>
+% <td style="border:2px solid black;"> Matlab R2016b </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
+% <td> <it>Monterey : Pass</it> </td>
 % </tr>
 % <tr>
 % <td style="border:2px solid black;"> Matlab R2015a </td>
 % <td> <it>W10 : Pass</it> </td>
-% <td> <it>Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
 % <td> <it></it> </td>
 % </tr>
 % <tr>
@@ -538,21 +789,21 @@ tf=[];
 % <td> <it></it> </td>
 % </tr>
 % <tr>
-% <td style="border:2px solid black;"> Matlab R2012b </td>
-% <td> <it>W10 : Pass</it> </td>
+% <td style="border:2px solid black;"> Matlab R2012a </td>
 % <td> <it></it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
 % <td> <it></it> </td>
 % </tr>
 % <tr>
 % <td style="border:2px solid black;"> Matlab R2011a </td>
 % <td> <it>W10 : Pass</it> </td>
-% <td> <it>Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
 % <td> <it></it> </td>
 % </tr>
 % <tr>
 % <td style="border:2px solid black;"> Matlab R2010b </td>
 % <td> <it></it> </td>
-% <td> <it>Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
 % <td> <it></it> </td>
 % </tr>
 % <tr>
@@ -580,28 +831,34 @@ tf=[];
 % <td> <it></it> </td>
 % </tr>
 % <tr>
-% <td style="border:2px solid black;"> Octave 6.2.0 </td>
+% <td style="border:2px solid black;"> Octave 7.1.0 </td>
 % <td> <it>W10 : Pass</it> </td>
 % <td> <it></it> </td>
 % <td> <it></it> </td>
 % </tr>
 % <tr>
+% <td style="border:2px solid black;"> Octave 6.2.0 </td>
+% <td> <it>W10 : Pass</it> </td>
+% <td> <it>raspbian_11 : Pass</it> </td>
+% <td> <it>Catalina : Pass</it> </td>
+% </tr>
+% <tr>
 % <td style="border:2px solid black;"> Octave 5.2.0 </td>
 % <td> <it>W10 : Pass</it> </td>
-% <td> <it>Pass</it> </td>
+% <td> <it>ubuntu_20.04 : Pass</it> </td>
 % <td> <it></it> </td>
 % </tr>
 % <tr>
 % <td style="border:2px solid black;"> Octave 4.4.1 </td>
 % <td> <it>W10 : Pass</it> </td>
 % <td> <it></it> </td>
-% <td> <it>Pass</it> </td>
+% <td> <it>Catalina : Pass</it> </td>
 % </tr>
 % </table>
 % </html>
 %
-%  Version: 2.0.0
-%  Date:    2021-05-11
+%  Version: 2.0.1
+%  Date:    2022-04-20
 %  Author:  H.J. Wisselink
 %  Licence: CC by-nc-sa 4.0 ( https://creativecommons.org/licenses/by-nc-sa/4.0 )
 %  Email = 'h_j_wisselink*alumnus_utwente_nl';
@@ -638,29 +895,161 @@ fprintf('\n')
 
 if any(~connected)
     if nargout>0
-        pass_part_fail='fail';return
+        pass_part_fail='fail';
     else
         error('test did not match expected result')
     end
-else
-    disp('test completed')
 end
+disp(['tester function ' mfilename ' finished '])
 if nargout==0,clear,end
 end
-function [connected,timing]=isnetavl(test_Matlab_instead_of_system)
-% Check for an internet connection by pinging Google.
-% Optional second output is the ping time (0 if not connected).
+function tf=ifversion(test,Rxxxxab,Oct_flag,Oct_test,Oct_ver)
+%Determine if the current version satisfies a version restriction
 %
-% Includes a fallback to HTML if usage of ping is not allowed. This increases the measured ping.
+% To keep the function fast, no input checking is done. This function returns a NaN if a release
+% name is used that is not in the dictionary.
 %
-% If you provide an input, the HTML method will be used, which has the benefit of testing if Matlab
-% (or Octave) is able to connect to the internet. This might be relevant if there are proxy
-% settings or firewall rules specific to Matlab/Octave.
+% Syntax:
+%   tf=ifversion(test,Rxxxxab)
+%   tf=ifversion(test,Rxxxxab,'Octave',test_for_Octave,v_Octave)
+%
+% Input/output arguments:
+% tf:
+%   If the current version satisfies the test this returns true. This works similar to verLessThan.
+% Rxxxxab:
+%   A char array containing a release description (e.g. 'R13', 'R14SP2' or 'R2019a') or the numeric
+%   version (e.g. 6.5, 7, or 9.6).
+% test:
+%   A char array containing a logical test. The interpretation of this is equivalent to
+%   eval([current test Rxxxxab]). For examples, see below.
+%
+% Examples:
+% ifversion('>=','R2009a') returns true when run on R2009a or later
+% ifversion('<','R2016a') returns true when run on R2015b or older
+% ifversion('==','R2018a') returns true only when run on R2018a
+% ifversion('==',9.9) returns true only when run on R2020b
+% ifversion('<',0,'Octave','>',0) returns true only on Octave
+% ifversion('<',0,'Octave','>=',6) returns true only on Octave 6 and higher
+%
+% The conversion is based on a manual list and therefore needs to be updated manually, so it might
+% not be complete. Although it should be possible to load the list from Wikipedia, this is not
+% implemented.
 %
 %/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%
 %|                                                                         |%
-%|  Version: 2.0.0                                                         |%
-%|  Date:    2021-05-19                                                    |%
+%|  Version: 1.1.1                                                         |%
+%|  Date:    2022-03-14                                                    |%
+%|  Author:  H.J. Wisselink                                                |%
+%|  Licence: CC by-nc-sa 4.0 ( creativecommons.org/licenses/by-nc-sa/4.0 ) |%
+%|  Email = 'h_j_wisselink*alumnus_utwente_nl';                            |%
+%|  Real_email = regexprep(Email,{'*','_'},{'@','.'})                      |%
+%|                                                                         |%
+%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%
+%
+% Tested on several versions of Matlab (ML 6.5 and onward) and Octave (4.4.1 and onward), and on
+% multiple operating systems (Windows/Ubuntu/MacOS). For the full test matrix, see the HTML doc.
+% Compatibility considerations:
+% - This is expected to work on all releases.
+
+% The decimal of the version numbers are padded with a 0 to make sure v7.10 is larger than v7.9.
+% This does mean that any numeric version input needs to be adapted. multiply by 100 and round to
+% remove the potential for float rounding errors.
+% Store in persistent for fast recall (don't use getpref, as that is slower than generating the
+% variables and makes updating this function harder).
+persistent  v_num v_dict octave
+if isempty(v_num)
+    % Test if Octave is used instead of Matlab.
+    octave=exist('OCTAVE_VERSION', 'builtin');
+    
+    % Get current version number. This code was suggested by Jan on this thread:
+    % https://mathworks.com/matlabcentral/answers/1671199#comment_2040389
+    v_num = [100, 1] * sscanf(version, '%d.%d', 2);
+    
+    % Get dictionary to use for ismember.
+    v_dict={...
+        'R13' 605;'R13SP1' 605;'R13SP2' 605;'R14' 700;'R14SP1' 700;'R14SP2' 700;
+        'R14SP3' 701;'R2006a' 702;'R2006b' 703;'R2007a' 704;'R2007b' 705;
+        'R2008a' 706;'R2008b' 707;'R2009a' 708;'R2009b' 709;'R2010a' 710;
+        'R2010b' 711;'R2011a' 712;'R2011b' 713;'R2012a' 714;'R2012b' 800;
+        'R2013a' 801;'R2013b' 802;'R2014a' 803;'R2014b' 804;'R2015a' 805;
+        'R2015b' 806;'R2016a' 900;'R2016b' 901;'R2017a' 902;'R2017b' 903;
+        'R2018a' 904;'R2018b' 905;'R2019a' 906;'R2019b' 907;'R2020a' 908;
+        'R2020b' 909;'R2021a' 910;'R2021b' 911;'R2022a' 912};
+end
+
+if octave
+    if nargin==2
+        warning('HJW:ifversion:NoOctaveTest',...
+            ['No version test for Octave was provided.',char(10),...
+            'This function might return an unexpected outcome.']) %#ok<CHARTEN>
+        if isnumeric(Rxxxxab)
+            v=0.1*Rxxxxab+0.9*fix(Rxxxxab);v=round(100*v);
+        else
+            L=ismember(v_dict(:,1),Rxxxxab);
+            if sum(L)~=1
+                warning('HJW:ifversion:NotInDict',...
+                    'The requested version is not in the hard-coded list.')
+                tf=NaN;return
+            else
+                v=v_dict{L,2};
+            end
+        end
+    elseif nargin==4
+        % Undocumented shorthand syntax: skip the 'Octave' argument.
+        [test,v]=deal(Oct_flag,Oct_test);
+        % Convert 4.1 to 401.
+        v=0.1*v+0.9*fix(v);v=round(100*v);
+    else
+        [test,v]=deal(Oct_test,Oct_ver);
+        % Convert 4.1 to 401.
+        v=0.1*v+0.9*fix(v);v=round(100*v);
+    end
+else
+    % Convert R notation to numeric and convert 9.1 to 901.
+    if isnumeric(Rxxxxab)
+        v=0.1*Rxxxxab+0.9*fix(Rxxxxab);v=round(100*v);
+    else
+        L=ismember(v_dict(:,1),Rxxxxab);
+        if sum(L)~=1
+            warning('HJW:ifversion:NotInDict',...
+                'The requested version is not in the hard-coded list.')
+            tf=NaN;return
+        else
+            v=v_dict{L,2};
+        end
+    end
+end
+switch test
+    case '==', tf= v_num == v;
+    case '<' , tf= v_num <  v;
+    case '<=', tf= v_num <= v;
+    case '>' , tf= v_num >  v;
+    case '>=', tf= v_num >= v;
+end
+end
+function [connected,timing]=isnetavl(use_HTML_test_only)
+%Check for an internet connection by pinging Google
+%
+% Syntax:
+%   [connected,timing]=isnetavl(use_HTML_test_only)
+%
+% Input/output arguments:
+% connected:
+%   A logical denoting the connectivity. Note that this may return unexpected results if Matlab has
+%   separate proxy settings and/or if your DNS is having issues.
+% timing:
+%   This contains the ping time as a double and defaults to 0 if there is no connection.
+%   Note that this value will be larger than the true ping time if the HTML fallback is used.
+% use_HTML_test_only:
+%   If the input is convertible to true the HTML method will be used, which has the benefit of
+%   testing if Matlab (or Octave) is able to connect to the internet. This might be relevant if
+%   there are proxy settings or firewall rules specific to Matlab/Octave.
+%   Note that the ping value will be larger than the true value if the HTML fallback is used.
+%
+%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%/%
+%|                                                                         |%
+%|  Version: 2.0.1                                                         |%
+%|  Date:    2022-04-20                                                    |%
 %|  Author:  H.J. Wisselink                                                |%
 %|  Licence: CC by-nc-sa 4.0 ( creativecommons.org/licenses/by-nc-sa/4.0 ) |%
 %|  Email = 'h_j_wisselink*alumnus_utwente_nl';                            |%
@@ -675,8 +1064,8 @@ function [connected,timing]=isnetavl(test_Matlab_instead_of_system)
 % - If you have proxy/firewall settings specific to Matlab/Octave, make sure to use the HTML method
 %   by providing an input.
 
-if nargin==0,                                                        tf=false;
-else,[tf1,tf2]=test_if_scalar_logical(test_Matlab_instead_of_system);tf=tf1&&tf2;
+if nargin==0,                                             tf=false;
+else,[tf1,tf2]=test_if_scalar_logical(use_HTML_test_only);tf=tf1&&tf2;
 end
 if tf
     %(the timing is not reliable)
@@ -707,7 +1096,7 @@ function [connected,timing]=isnetavl___ping_via_html
 persistent UseWebread
 if isempty(UseWebread)
     try no_webread=isempty(which(func2str(@webread)));catch,no_webread=true;end
-	UseWebread=~no_webread;
+    UseWebread=~no_webread;
 end
 try
     then=now;
@@ -800,6 +1189,49 @@ end
 %Both methods failed, internet is down. Leave the value of tf (and the persistent variable) set to
 %empty so it is tried next time.
 tf=[];
+end
+function [isLogical,val]=test_if_scalar_logical(val)
+%Test if the input is a scalar logical or convertible to it.
+%The char and string test are not case sensitive.
+%(use the first output to trigger an input error, use the second as the parsed input)
+%
+% Allowed values:
+%- true or false
+%- 1 or 0
+%- 'on' or 'off'
+%- "on" or "off"
+%- matlab.lang.OnOffSwitchState.on or matlab.lang.OnOffSwitchState.off
+%- 'enable' or 'disable'
+%- 'enabled' or 'disabled'
+persistent states
+if isempty(states)
+    states={true,false;...
+        1,0;...
+        'on','off';...
+        'enable','disable';...
+        'enabled','disabled'};
+    if ifversion('>=','R2016b','<',0)
+        states(end+1,:)={string('on'),string('off')}; %#ok<STRQUOT>
+    end
+end
+isLogical=true;
+try
+    if isa(val,'char') || isa(val,'string')
+        try val=lower(val);catch,end
+    end
+    for n=1:size(states,1)
+        for m=1:2
+            if isequal(val,states{n,m})
+                val=states{1,m};return
+            end
+        end
+    end
+    if isa(val,'matlab.lang.OnOffSwitchState')
+        val=logical(val);return
+    end
+catch
+end
+isLogical=false;
 end
 
 ##### SOURCE END #####
